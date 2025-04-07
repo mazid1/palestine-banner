@@ -15,11 +15,11 @@ interface BannerStyle {
 }
 
 class PalestineBanner {
-	private options: Required<BannerOptions>;
-	private banner: HTMLDivElement | null;
+	private _options: Required<BannerOptions>;
+	private _banner: HTMLDivElement | null;
 
 	constructor(options: BannerOptions = {}) {
-		this.options = {
+		this._options = {
 			message: "Free Palestine 🇵🇸",
 			backgroundColor:
 				"linear-gradient(90deg, #000000 0%, #009639 33%, #CE1126 66%, #000000 100%)",
@@ -30,31 +30,31 @@ class PalestineBanner {
 			showCloseButton: true,
 			...options,
 		};
-		this.banner = null;
+		this._banner = null;
 		this.init();
 	}
 
 	private init(): void {
 		// Create banner element
-		this.banner = document.createElement("div");
-		this.banner.className = "palestine-banner";
+		this._banner = document.createElement("div");
+		this._banner.className = "palestine-banner";
 
 		// Set styles
-		this.banner.style.cssText = `
+		this._banner.style.cssText = `
             position: fixed;
             left: 0;
             right: 0;
-            ${this.options.position === "top" ? "top: 0;" : "bottom: 0;"}
+            ${this._options.position === "top" ? "top: 0;" : "bottom: 0;"}
             width: 100%;
-            height: ${this.options.height};
-            background: ${this.options.backgroundColor};
+            height: ${this._options.height};
+            background: ${this._options.backgroundColor};
             background-size: 200% 200%;
             animation: gradient 15s ease infinite;
-            color: ${this.options.textColor};
+            color: ${this._options.textColor};
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: ${this.options.fontSize};
+            font-size: ${this._options.fontSize};
             font-family: Arial, sans-serif;
             z-index: 9999;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -74,12 +74,12 @@ class PalestineBanner {
 
 		// Create message element
 		const message = document.createElement("div");
-		message.textContent = this.options.message;
+		message.textContent = this._options.message;
 		message.style.textShadow = "0 0 10px rgba(0,0,0,0.5)";
 		messageContainer.appendChild(message);
 
 		// Create close button if enabled
-		if (this.options.showCloseButton) {
+		if (this._options.showCloseButton) {
 			const closeButton = document.createElement("button");
 			closeButton.innerHTML = "&times;";
 			closeButton.style.cssText = `
@@ -87,7 +87,7 @@ class PalestineBanner {
                 right: 15px;
                 background: none;
                 border: none;
-                color: ${this.options.textColor};
+                color: ${this._options.textColor};
                 font-size: 24px;
                 cursor: pointer;
                 padding: 0 8px;
@@ -110,10 +110,10 @@ class PalestineBanner {
 			messageContainer.appendChild(closeButton);
 		}
 
-		this.banner.appendChild(messageContainer);
+		this._banner.appendChild(messageContainer);
 
 		// Add to document
-		document.body.appendChild(this.banner);
+		document.body.appendChild(this._banner);
 
 		// Add keyframes for gradient animation
 		const style = document.createElement("style");
@@ -128,16 +128,16 @@ class PalestineBanner {
 
 		// Adjust body margin to prevent content from being hidden
 		const bodyStyle = document.body.style;
-		if (this.options.position === "top") {
-			bodyStyle.marginTop = this.options.height;
+		if (this._options.position === "top") {
+			bodyStyle.marginTop = this._options.height;
 		} else {
-			bodyStyle.marginBottom = this.options.height;
+			bodyStyle.marginBottom = this._options.height;
 		}
 	}
 
 	public updateMessage(newMessage: string): void {
-		if (this.banner) {
-			const messageContainer = this.banner.querySelector(
+		if (this._banner) {
+			const messageContainer = this._banner.querySelector(
 				".palestine-banner > div",
 			);
 			if (messageContainer) {
@@ -150,16 +150,25 @@ class PalestineBanner {
 	}
 
 	public updateStyle(newStyle: BannerStyle): void {
-		if (this.banner) {
-			Object.assign(this.banner.style, newStyle);
+		if (this._banner) {
+			Object.assign(this._banner.style, newStyle);
 		}
 	}
 
 	public remove(): void {
-		if (this.banner) {
-			this.banner.remove();
+		if (this._banner) {
+			this._banner.remove();
 			document.body.style.marginTop = "";
 			document.body.style.marginBottom = "";
+		}
+	}
+
+	public togglePosition(): void {
+		if (this._banner) {
+			this._options.position =
+				this._options.position === "top" ? "bottom" : "top";
+			this.remove();
+			this.init();
 		}
 	}
 }

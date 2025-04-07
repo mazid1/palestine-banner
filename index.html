@@ -40,36 +40,6 @@
         <p>Try the buttons above to see different banner configurations.</p>
     </div>
 
-    <script type="module">
-        import { PalestineBanner } from './dist/palestine-banner.js';
-
-        // Initialize the banner
-        window.banner = new PalestineBanner();
-
-        // Make functions available globally
-        window.updateBannerMessage = function() {
-            const messages = [
-                'Free Palestine 🇵🇸',
-                'Stop the Genocide 🕊️',
-                'End the Occupation ✊',
-                'Justice for Palestine ⚖️',
-                'Boycott Israel 🚫',
-                'Ceasefire Now 🕊️'
-            ];
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            banner.updateMessage(randomMessage);
-        };
-
-        window.changeBannerPosition = function() {
-            const currentPosition = banner.options.position;
-            banner.remove();
-            banner.options.position = currentPosition === 'top' ? 'bottom' : 'top';
-            banner.init();
-        };
-
-        window.removeBanner = function() {
-            banner.remove();
-        };
-    </script>
+    <script src="./dist/index.js"></script>
 </body>
 </html>

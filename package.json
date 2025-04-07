@@ -2,11 +2,12 @@
 	"name": "palestine-banner",
 	"version": "1.0.0",
 	"description": "A simple, customizable banner to show support for Palestine",
-	"main": "dist/palestine-banner.js",
-	"types": "dist/palestine-banner.d.ts",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "bun build ./src/palestine-banner.ts --outfile ./dist/palestine-banner.js && tsc --emitDeclarationOnly --outDir dist",
-		"dev": "bun build ./src/palestine-banner.ts --outfile ./dist/palestine-banner.js --watch & tsc --emitDeclarationOnly --outDir dist --watch"
+		"build": "bun run clear && bun build ./src/index.ts --outfile ./dist/index.js && tsc --emitDeclarationOnly --outDir dist",
+		"dev": "bun run clear && bun build ./src/index.ts --outfile ./dist/index.js --watch & tsc --emitDeclarationOnly --outDir dist --watch",
+		"clear": "rm -rf dist"
 	},
 	"keywords": ["palestine", "banner", "solidarity"],
 	"author": "Mazedul Islam",
