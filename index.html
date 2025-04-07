@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palestine Banner Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .demo-controls {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Palestine Banner Demo</h1>
+        <div class="demo-controls">
+            <button onclick="updateBannerMessage()">Update Message</button>
+            <button onclick="changeBannerPosition()">Toggle Position</button>
+            <button onclick="removeBanner()">Remove Banner</button>
+        </div>
+        <p>This is a demonstration of the Palestine banner. The banner can be customized with different messages, colors, and positions.</p>
+        <p>Try the buttons above to see different banner configurations.</p>
+    </div>
+
+    <script src="palestine-banner.js"></script>
+    <script>
+        // Initialize the banner
+        const banner = new PalestineBanner({
+            message: 'Free Palestine 🇵🇸',
+            backgroundColor: 'linear-gradient(90deg, #000000 0%, #009639 33%, #CE1126 66%, #000000 100%)',
+            textColor: '#FFFFFF'
+        });
+
+        // Demo functions
+        function updateBannerMessage() {
+            const messages = [
+                'Free Palestine 🇵🇸',
+                'Stop the Genocide 🕊️',
+                'End the Occupation ✊',
+                'Justice for Palestine ⚖️',
+                'Boycott Israel 🚫',
+                'Ceasefire Now 🕊️'
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            banner.updateMessage(randomMessage);
+        }
+
+        function changeBannerPosition() {
+            const currentPosition = banner.options.position;
+            banner.remove();
+            banner.options.position = currentPosition === 'top' ? 'bottom' : 'top';
+            banner.init();
+        }
+
+        function removeBanner() {
+            banner.remove();
+        }
+    </script>
+</body>
+</html> 
