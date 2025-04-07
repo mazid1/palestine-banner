@@ -11,14 +11,31 @@ A simple, customizable banner that can be easily embedded in any webpage to show
 - Simple API for dynamic updates
 - Gradient background animation
 - Optional close button
+- Written in TypeScript with full type support
 
 ## Installation
 
-1. Download the `palestine-banner.js` file
+1. Download the `dist/palestine-banner.js` file
 2. Include it in your HTML file:
 
 ```html
-<script src="palestine-banner.js"></script>
+<script src="dist/palestine-banner.js"></script>
+```
+
+## Development
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+bun install
+```
+3. Start development server:
+```bash
+bun run dev
+```
+4. Build for production:
+```bash
+bun run build
 ```
 
 ## Usage
