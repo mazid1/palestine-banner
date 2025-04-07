@@ -1,22 +1,18 @@
 {
-  "name": "palestine-banner",
-  "version": "1.0.0",
-  "description": "A simple, customizable banner to show support for Palestine",
-  "main": "dist/palestine-banner.js",
-  "types": "dist/palestine-banner.d.ts",
-  "scripts": {
-    "build": "bun build ./src/palestine-banner.ts --outfile ./dist/palestine-banner.js && tsc --emitDeclarationOnly --outDir dist",
-    "dev": "bun build ./src/palestine-banner.ts --outfile ./dist/palestine-banner.js --watch"
-  },
-  "keywords": [
-    "palestine",
-    "banner",
-    "solidarity"
-  ],
-  "author": "Mazedul Islam",
-  "license": "MIT",
-  "devDependencies": {
-    "bun-types": "latest",
-    "typescript": "^5.0.0"
-  }
-} 
+	"name": "palestine-banner",
+	"version": "1.0.0",
+	"description": "A simple, customizable banner to show support for Palestine",
+	"main": "dist/palestine-banner.js",
+	"types": "dist/palestine-banner.d.ts",
+	"scripts": {
+		"build": "bun build ./src/palestine-banner.ts --outfile ./dist/palestine-banner.js && tsc --emitDeclarationOnly --outDir dist",
+		"dev": "bun build ./src/palestine-banner.ts --outfile ./dist/palestine-banner.js --watch & tsc --emitDeclarationOnly --outDir dist --watch"
+	},
+	"keywords": ["palestine", "banner", "solidarity"],
+	"author": "Mazedul Islam",
+	"license": "MIT",
+	"devDependencies": {
+		"bun-types": "latest",
+		"typescript": "^5.0.0"
+	}
+}
