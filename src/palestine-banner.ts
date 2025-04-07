@@ -56,10 +56,8 @@ class PalestineBanner {
             justify-content: center;
             font-size: ${this._options.fontSize};
             font-family: Arial, sans-serif;
-            z-index: 9999;
+            z-index: 999999;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
         `;
 
 		// Create message container
