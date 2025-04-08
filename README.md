@@ -2,6 +2,12 @@
 
 A simple, customizable banner that can be easily embedded in any webpage to show support for Palestine and raise awareness about the ongoing genocide.
 
+## Demo
+
+Live demo link: [https://palestine-banner.vercel.app/](https://palestine-banner.vercel.app/)
+
+![Project screenshot](docs/demo.png)
+
 ## Features
 
 - Easy to integrate
@@ -27,13 +33,13 @@ npm install palestine-banner
 2. Include it in your HTML file:
 
 ```html
-<script src="dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/palestine-banner@1.0.1/dist/index.min.js"></script>
 ```
 
 Or
 
 ```html
-<script src="dist/palestine-banner.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/palestine-banner@1.0.1/dist/palestine-banner.js"></script>
 ```
 
 ## Usage
