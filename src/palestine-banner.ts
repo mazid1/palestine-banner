@@ -5,7 +5,6 @@ interface BannerOptions {
 	backgroundColor?: string;
 	textColor?: string;
 	position?: "top" | "bottom";
-	height?: string;
 	fontSize?: string;
 	showCloseButton?: boolean;
 }
@@ -27,7 +26,6 @@ class PalestineBanner {
 				"linear-gradient(90deg, #000000 0%, #009639 33%, #CE1126 66%, #000000 100%)",
 			textColor: "#FFFFFF",
 			position: "top",
-			height: "40px",
 			fontSize: "16px",
 			showCloseButton: true,
 			...options,
@@ -41,13 +39,12 @@ class PalestineBanner {
 		this._banner = document.createElement("div");
 		this._banner.className = "palestine-banner";
 
-		// Set styles
+		// Set banner styles
 		this._banner.style.cssText = `
 			position: fixed;
 			left: 0;
 			right: 0;
 			${this._options.position === "top" ? "top: 0;" : "bottom: 0;"}
-			height: ${this._options.height};
 			background: ${this._options.backgroundColor};
 			background-size: 200% 200%;
 			animation: gradient 15s ease infinite;
@@ -62,7 +59,7 @@ class PalestineBanner {
 			font-family: Arial, sans-serif;
 			z-index: 999999;
 			box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-			padding: 0 16px;
+			padding: 8px 16px;
 	`;
 
 		// Create message container
@@ -131,9 +128,9 @@ class PalestineBanner {
 		// Adjust body margin to prevent content from being hidden
 		const bodyStyle = document.body.style;
 		if (this._options.position === "top") {
-			bodyStyle.marginTop = this._options.height;
+			bodyStyle.marginTop = `${this._banner.clientHeight}px`;
 		} else {
-			bodyStyle.marginBottom = this._options.height;
+			bodyStyle.marginBottom = `${this._banner.clientHeight}px`;
 		}
 	}
 
@@ -162,6 +159,14 @@ class PalestineBanner {
 			this._banner.remove();
 			document.body.style.marginTop = "";
 			document.body.style.marginBottom = "";
+		}
+	}
+
+	public setPosition(newPosition: BannerOptions["position"]): void {
+		if (this._banner) {
+			this._options.position = newPosition || this._options.position;
+			this.remove();
+			this.init();
 		}
 	}
 

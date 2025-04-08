@@ -3,8 +3,8 @@ import { PalestineBanner } from "./palestine-banner";
 
 declare global {
 	interface Window {
-		updateBannerMessage: () => void;
-		changeBannerPosition: () => void;
+		setRandomBannerMessage: () => void;
+		toggleBannerPosition: () => void;
 		removeBanner: () => void;
 	}
 }
@@ -13,12 +13,12 @@ declare global {
 const banner = new PalestineBanner();
 
 // Make functions available globally
-const updateBannerMessage = () => {
+const setRandomBannerMessage = () => {
 	const randomMessage = getRandomMessage();
 	banner.updateMessage(randomMessage);
 };
 
-const changeBannerPosition = () => {
+const toggleBannerPosition = () => {
 	banner.togglePosition();
 };
 
@@ -27,7 +27,7 @@ const removeBanner = () => {
 };
 
 if (typeof window !== "undefined") {
-	window.updateBannerMessage = updateBannerMessage;
-	window.changeBannerPosition = changeBannerPosition;
+	window.setRandomBannerMessage = setRandomBannerMessage;
+	window.toggleBannerPosition = toggleBannerPosition;
 	window.removeBanner = removeBanner;
 }
