@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "bun run clear && bun build ./src/index.ts --outfile ./dist/index.js && tsc --emitDeclarationOnly --outDir dist",
+		"build": "bun run clear && bun build ./src/index.ts --outfile ./dist/index.js --minify && tsc --emitDeclarationOnly --outDir dist",
 		"dev": "bun run clear && bun build ./src/index.ts --outfile ./dist/index.js --watch & tsc --emitDeclarationOnly --outDir dist --watch",
 		"clear": "rm -rf dist"
 	},
