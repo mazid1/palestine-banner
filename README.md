@@ -76,6 +76,7 @@ Please check the `src/demo.ts` file for example.
 
 ### Methods
 
+- `updateWithRandomMessage()`: Update the banner message with a randomly picket message
 - `updateMessage(newMessage)`: Update the banner message
 - `updateStyle(newStyle)`: Update the banner styles
 - `remove()`: Remove the banner from the page
