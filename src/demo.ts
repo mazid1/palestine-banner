@@ -1,4 +1,3 @@
-import { getRandomMessage } from "./messages";
 import { PalestineBanner } from "./palestine-banner";
 
 declare global {
@@ -14,8 +13,7 @@ const banner = new PalestineBanner();
 
 // Make functions available globally
 const setRandomBannerMessage = () => {
-	const randomMessage = getRandomMessage();
-	banner.updateMessage(randomMessage);
+	banner.updateWithRandomMessage();
 };
 
 const toggleBannerPosition = () => {

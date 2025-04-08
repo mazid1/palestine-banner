@@ -1,6 +1,6 @@
 {
 	"name": "palestine-banner",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A simple, customizable banner to show support for Palestine",
 	"main": "dist/index.js",
 	"types": "dist/palestine-banner.d.ts",
@@ -10,7 +10,7 @@
 		"build:index": "bun build ./src/index.ts --outdir dist --minify && tsc ./src/index.ts --declaration --emitDeclarationOnly --outDir dist",
 		"build:core": "bun build ./src/palestine-banner.ts --outdir dist --minify && tsc ./src/palestine-banner.ts --declaration --emitDeclarationOnly --outDir dist",
 		"build:demo": "bun build ./src/demo.ts --outdir dist --minify && tsc ./src/demo.ts --declaration --emitDeclarationOnly --outDir dist",
-		"dev": "bun run clear && tsc ./src/demo.ts --declaration --outDir dist --watch",
+		"dev": "bun run clear && bun build ./src/demo.ts --outdir dist --watch",
 		"clear": "rm -rf dist"
 	},
 	"keywords": ["palestine", "banner", "solidarity"],

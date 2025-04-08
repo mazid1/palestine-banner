@@ -44,6 +44,31 @@
     <!-- <script src="./dist/demo.js"></script> -->
 
     <!-- Uncomment this for production -->
-     <script src="https://cdn.jsdelivr.net/npm/palestine-banner@1.0.1/dist/index.min.js"></script>
+    <script type="module">
+        import {PalestineBanner} from "https://cdn.jsdelivr.net/npm/palestine-banner@1.0.2/dist/palestine-banner.min.js";
+
+        // Initialize the banner
+        const banner = new PalestineBanner();
+
+        // Make functions available globally
+        const setRandomBannerMessage = () => {
+            banner.updateWithRandomMessage();
+        };
+
+        const toggleBannerPosition = () => {
+            banner.togglePosition();
+        };
+
+        const removeBanner = () => {
+            banner.remove();
+        };
+
+        if (typeof window !== "undefined") {
+            window.setRandomBannerMessage = setRandomBannerMessage;
+            window.toggleBannerPosition = toggleBannerPosition;
+            window.removeBanner = removeBanner;
+        }
+    </script>
+
 </body>
 </html>
