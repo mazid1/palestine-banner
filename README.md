@@ -15,6 +15,14 @@ A simple, customizable banner that can be easily embedded in any webpage to show
 
 ## Installation
 
+### Package manager
+
+```bash
+npm install palestine-banner
+```
+
+### CDN
+
 1. Download the `dist/index.js` file for basic usage or `dist/palestine-banner.js` file for more configuration options.
 2. Include it in your HTML file:
 
@@ -33,6 +41,17 @@ Or
 ### Basic usage:
 
 Adding the `dist/index.js` in the html file (check installation section) should be sufficient for basic usage.
+
+For [nextjs](https://nextjs.org/) project we must import this file in a client component. Then render that component in the root layout component.
+
+```typescript
+"use client";
+import "palestine-banner/dist/index";
+
+export const PalestineBanner = () => {
+  return null;
+}
+```
 
 
 ### Configuration Options
