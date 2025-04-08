@@ -1,3 +1,5 @@
+import { getRandomMessage } from "./messages";
+
 interface BannerOptions {
 	message?: string;
 	backgroundColor?: string;
@@ -20,7 +22,7 @@ class PalestineBanner {
 
 	constructor(options: BannerOptions = {}) {
 		this._options = {
-			message: "Free Palestine 🇵🇸",
+			message: getRandomMessage(),
 			backgroundColor:
 				"linear-gradient(90deg, #000000 0%, #009639 33%, #CE1126 66%, #000000 100%)",
 			textColor: "#FFFFFF",
@@ -41,39 +43,43 @@ class PalestineBanner {
 
 		// Set styles
 		this._banner.style.cssText = `
-            position: fixed;
-            left: 0;
-            right: 0;
-            ${this._options.position === "top" ? "top: 0;" : "bottom: 0;"}
-            width: 100%;
-            height: ${this._options.height};
-            background: ${this._options.backgroundColor};
-            background-size: 200% 200%;
-            animation: gradient 15s ease infinite;
-            color: ${this._options.textColor};
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: ${this._options.fontSize};
-            font-family: Arial, sans-serif;
-            z-index: 999999;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        `;
+			position: fixed;
+			left: 0;
+			right: 0;
+			${this._options.position === "top" ? "top: 0;" : "bottom: 0;"}
+			height: ${this._options.height};
+			background: ${this._options.backgroundColor};
+			background-size: 200% 200%;
+			animation: gradient 15s ease infinite;
+			color: ${this._options.textColor};
+			display: flex;
+			flex-direction: row;
+			flex-gap: 10px;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: center;
+			font-size: ${this._options.fontSize};
+			font-family: Arial, sans-serif;
+			z-index: 999999;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+			padding: 0 16px;
+	`;
 
 		// Create message container
 		const messageContainer = document.createElement("div");
 		messageContainer.style.cssText = `
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            position: relative;
-        `;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+		`;
 
 		// Create message element
 		const message = document.createElement("div");
 		message.textContent = this._options.message;
 		message.style.textShadow = "0 0 10px rgba(0,0,0,0.5)";
+		message.style.flex = "1";
+		message.style.textAlign = "center";
 		messageContainer.appendChild(message);
 
 		// Create close button if enabled
@@ -81,17 +87,15 @@ class PalestineBanner {
 			const closeButton = document.createElement("button");
 			closeButton.innerHTML = "&times;";
 			closeButton.style.cssText = `
-                position: absolute;
-                right: 15px;
-                background: none;
-                border: none;
-                color: ${this._options.textColor};
-                font-size: 24px;
-                cursor: pointer;
-                padding: 0 8px;
-                opacity: 0.8;
-                transition: opacity 0.2s;
-            `;
+				background: none;
+				border: none;
+				color: ${this._options.textColor};
+				font-size: 24px;
+				cursor: pointer;
+				padding: 0 8px;
+				opacity: 0.8;
+				transition: opacity 0.2s;
+			`;
 
 			const handleMouseOver = (): void => {
 				closeButton.style.opacity = "1";
@@ -116,12 +120,12 @@ class PalestineBanner {
 		// Add keyframes for gradient animation
 		const style = document.createElement("style");
 		style.textContent = `
-            @keyframes gradient {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-            }
-        `;
+			@keyframes gradient {
+					0% { background-position: 0% 50%; }
+					50% { background-position: 100% 50%; }
+					100% { background-position: 0% 50%; }
+			}
+		`;
 		document.head.appendChild(style);
 
 		// Adjust body margin to prevent content from being hidden

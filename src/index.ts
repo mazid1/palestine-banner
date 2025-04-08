@@ -2,7 +2,7 @@ import { PalestineBanner } from "./palestine-banner";
 
 declare global {
 	interface Window {
-		updateBannerMessage: () => void;
+		updateBannerMessage: (message: string) => void;
 		changeBannerPosition: () => void;
 		removeBanner: () => void;
 	}
@@ -12,17 +12,8 @@ declare global {
 const banner = new PalestineBanner();
 
 // Make functions available globally
-const updateBannerMessage = () => {
-	const messages = [
-		"Free Palestine 🇵🇸",
-		"Stop the Genocide 🕊️",
-		"End the Occupation ✊",
-		"Justice for Palestine ⚖️",
-		"Boycott Israel 🚫",
-		"Ceasefire Now 🕊️",
-	];
-	const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-	banner.updateMessage(randomMessage);
+const updateBannerMessage = (message: string) => {
+	banner.updateMessage(message);
 };
 
 const changeBannerPosition = () => {
