@@ -33,13 +33,13 @@ npm install palestine-banner
 2. Include it in your HTML file:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/palestine-banner@1.0.1/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/palestine-banner@1.0.4/dist/index.min.js"></script>
 ```
 
 Or
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/palestine-banner@1.0.1/dist/palestine-banner.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/palestine-banner@1.0.4/dist/palestine-banner.js"></script>
 ```
 
 ## Usage

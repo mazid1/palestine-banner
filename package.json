@@ -1,6 +1,6 @@
 {
 	"name": "palestine-banner",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A simple, customizable banner to show support for Palestine",
 	"main": "dist/index.js",
 	"types": "dist/palestine-banner.d.ts",
