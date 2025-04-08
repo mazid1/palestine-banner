@@ -31,7 +31,9 @@ class PalestineBanner {
 			...options,
 		};
 		this._banner = null;
-		this.init();
+		if (typeof window !== "undefined") {
+			this.init();
+		}
 	}
 
 	private init(): void {
