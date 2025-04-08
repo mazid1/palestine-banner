@@ -1,8 +1,9 @@
+import { getRandomMessage } from "./messages";
 import { PalestineBanner } from "./palestine-banner";
 
 declare global {
 	interface Window {
-		updateBannerMessage: (message: string) => void;
+		updateBannerMessage: () => void;
 		changeBannerPosition: () => void;
 		removeBanner: () => void;
 	}
@@ -12,8 +13,9 @@ declare global {
 const banner = new PalestineBanner();
 
 // Make functions available globally
-const updateBannerMessage = (message: string) => {
-	banner.updateMessage(message);
+const updateBannerMessage = () => {
+	const randomMessage = getRandomMessage();
+	banner.updateMessage(randomMessage);
 };
 
 const changeBannerPosition = () => {
