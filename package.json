@@ -5,7 +5,10 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "bun run clear && bun build ./src/index.ts --outfile ./dist/index.js --minify && tsc --emitDeclarationOnly --outDir dist",
+		"build": "bun run clear && bun run build-index && bun run build-core && bun run build-demo && tsc --emitDeclarationOnly --outDir dist",
+		"build-index": "bun build ./src/index.ts --outfile ./dist/index.js --minify",
+		"build-core": "bun build ./src/palestine-banner.ts --outfile ./dist/palestine-banner.js --minify",
+		"build-demo": "bun build ./src/demo.ts --outfile ./dist/demo.js --minify",
 		"dev": "bun run clear && bun build ./src/index.ts --outfile ./dist/index.js --watch & tsc --emitDeclarationOnly --outDir dist --watch",
 		"clear": "rm -rf dist"
 	},
